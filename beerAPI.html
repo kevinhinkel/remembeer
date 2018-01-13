@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+	var breweries = [];
+     
+
+ function displayBeerFacts() {
+       
+        var queryURL = "http://api.brewerydb.com/v2/?key=a37a220d023a72fb358d5761d1f0f322";
+
+
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+
+
+        }).done(function(response) {
+          console.log(response);
+
+</script>
+</body>
+</html>
