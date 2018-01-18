@@ -1,28 +1,76 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>favorites</title>
-	<link href="https://fonts.googleapis.com/css?family=Baloo+Chettan" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-	<meta name ="veiwport" content="width=device-width initial-scale=1">  
-</head>
-<body>
-<!-- begin template -->
-	<header id="masthead">
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Reset CSS File -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+		
+		<!-- Custom fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Baloo+Chettan" rel="stylesheet">
+	
+		<title>Favorites</title>
+		
+	</head>
+	<body>
+		<!-- Navbar -->
+		<header id="masthead">
+			<div class="containter">
+				<div id="logo"> <a href="index.html"> <img src="assets/images/Logo150x108_YW.png"/> </a> </div> 
+				<nav>
+					<a href="home.html">HOME</a>
+					<a href="index.html">ABOUT</a>
+					<a href="map.html">MAP</a>
+					<a href="favorites.html">FAVORITES</a>
+				</nav>
+			</div>
+		</header>
+		
+		<!-- Table of saved favorites -->
 		<div class="containter">
-			<div id="logo"> <a href="index.html"> <img src="assets/images/Logo150x108_YW.png"/> </a> </div> 
-			<nav>
-				<a href="home.html">HOME</a>
-				<a href="index.html">ABOUT</a>
-				<a href="map.html">MAP</a>
-				<a href="favorites.html">FAVORITES</a>
-			</nav>
+			<div class="row">
+				<div class="col-md-12">
+					<table class="table table-hover">
+					  <thead>
+					    <tr>
+					    	<!-- room for icon-->
+					      <th scope="col"></th>
+					      <th scope="col">Name</th>
+					      <th scope="col">Established</th>
+					      <!-- room for delete icon -->
+					      <ht scope="col"></ht>
+					    </tr>
+					  </thead>
+					  <tbody class="favorites-table">
+					  	<!-- list of favorites go here -->
+					  </tbody>
+					</table>
+				</div>
+			</div>
 		</div>
-	</header>
+		
+		<footer>
+			<div class="containter">
+				<p><strong>DON'T WORRY, BE HOPPY</strong></p>
+			</div>
+		</footer>
+		
+		
+		<!-- Firebase -->
+		<script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
 
-</body>
-<!-- end template -->
-
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
+	</body>
 </html>
