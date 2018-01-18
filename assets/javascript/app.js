@@ -22,22 +22,6 @@ var locationType = "brewery";
 
 
 
-// Home Page click
-//==================================================================================================
-
-$("#submit-location").on("click", function() {
-
-  // Don't refresh the page!
-  event.preventDefault();
-
-  // capture values from form entry
-  city = $("#location-input").val().trim();
-
-
-  console.log(location);
-
-});
-
 
 
 // google API
@@ -65,7 +49,8 @@ $("#submit-location").on("click", function() {
 // Brewery API
 //==================================================================================================
 
-  var name = "schells"
+  // name will come from google api results based on the button clicked
+  var name = "schells";
   var apiKey = "?key=" + "a37a220d023a72fb358d5761d1f0f322";
   var brewery = "&q=" + name;
     
@@ -80,8 +65,16 @@ $("#submit-location").on("click", function() {
     }).done(function(response) {
     console.log(response);
     
-    var tBody = $("tbody");
+    // get referance to favorites
+    var tBody = $(".favorites-table");
     var tRow = $("<tr>");
+    
+    // Create a button for deleting favorites
+    var trashImg = $("<img>");
+    trashImg.attr("src", "assets/images/trash-2x.png");
+    var trashButton = $("<button>").append(trashImg);
+    var tableTrash = $("<td>").append(trashButton);
+    tableTrash.addClass("trashButton");
     
     
     var icon = $("<img>");
@@ -91,7 +84,7 @@ $("#submit-location").on("click", function() {
     var name = $("<td>").text(response.data[0].name);
     var established = $("<td>").text(response.data[0].established);
     
-    tRow.append(icon, name, established);
+    tRow.append(icon, name, established, tableTrash);
     tBody.append(tRow);
       
   });
@@ -101,23 +94,46 @@ $("#submit-location").on("click", function() {
   breweryInfo();
 
 
-// location click to save
+// When clicking on a result on the google map page
 //==================================================================================================
 
-// click on "this"
-//$("#").on("click", function() {
- // database.ref().push({
- //   tableCity: city,
- //   tableLocationType: locationType,
- //  });
- //}
+// Don't refresh the page!
+//  event.preventDefault();
 
+  // capture values from form entry
+  // breweryIcon = 
+  // breweryName = 
+  // established = 
+  
+  // console.log(breweryIcon);
+  // console.log(breweryName);
+  // console.log(established);
+  
+  
+  // push data into the firebase database
+  // database.ref().push({
+  //   breweryIcon: breweryIcon,
+  //   breweryName: breweryName,
+  //   established: established,
+  // });
+  
 
 
 // Firebase listener
 //==================================================================================================
 
 // database.ref().on("child_added", function(snapshot) {
+//   console.log(snapshot);
+  
+  // capture results from clicking on a button on the map page
+  // var breweryIcon = 
+  // var breweryName = 
+  // var established = 
+  
+  // Update Table with values
+  // I will have to move the Brewyer API jquery down here once Dylan is done with the google api
+  
+  
 
 
 
