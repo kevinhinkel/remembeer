@@ -1,20 +1,164 @@
-/*
-A custom Bootstrap 3.1 theme from http://bootply.com\
-
-This CSS code should follow the 'bootstrap.css'
-in your HTML file.
-
-license: MIT
-author: bootply.com
-*/
-
-
-html,body{
-  	height:100%;
-    background: #f5f5dc;
+/*@import url('https://fonts.googleapis.com/css?family=Baloo Chettan');*/
+* {
+	box-sizing: border-box;
 }
 
-body{
-    background-image: url("assets/img/intro-bg.jpeg");
-  	padding-top:50px; /*padding for navbar*/
+body {
+	font-size: 18px;
+	line-height: 34px;
+	font-family: 'Arial', 'Helvetic Neue', Helvetica,
+	sans-serif;
+	color: black;
+	background-color: #faaf35;
 }
+/*home page styling*/
+.content{
+	margin-top: 50px;
+	text-align: center;
+}
+button{
+  background: #ffffff;
+  background-image: -webkit-linear-gradient(top, #ffffff, #dbdbdb);
+  background-image: -moz-linear-gradient(top, #ffffff, #dbdbdb);
+  background-image: -ms-linear-gradient(top, #ffffff, #dbdbdb);
+  background-image: -o-linear-gradient(top, #ffffff, #dbdbdb);
+  background-image: linear-gradient(to bottom, #ffffff, #dbdbdb);
+  -webkit-border-radius: 4;
+  -moz-border-radius: 4;
+  border-radius: 4px;
+  font-family: Arial;
+  color: #000000;
+  font-size: 20px;
+  padding: 6px 20px 6px 20px;
+  text-decoration: none;
+}
+
+button:hover {
+  background: #c2c2c2;
+  background-image: -webkit-linear-gradient(top, #c2c2c2, #808080);
+  background-image: -moz-linear-gradient(top, #c2c2c2, #808080);
+  background-image: -ms-linear-gradient(top, #c2c2c2, #808080);
+  background-image: -o-linear-gradient(top, #c2c2c2, #808080);
+  background-image: linear-gradient(to bottom, #c2c2c2, #808080);
+  text-decoration: none;
+}
+
+
+/*about page styling*/
+.container {
+	width: 100%;
+	max-width: 960px;
+	margin: 0 auto;
+	clear: both;
+}
+
+p h1 {
+ 	margin-bottom: 20px;
+ }
+
+p:last-child {
+	margin-bottom: 0;
+}
+
+h1 {
+	font-size: 30px;
+	line-height: 49px;
+	padding-bottom: 20px;
+}
+
+
+/*header*/
+#masthead {
+	background: #fff;
+	margin: 0 0 20px;
+	z-index: 99;
+	color: #fff;
+	overflow: auto;
+	border-bottom: 2px solid #ccc;
+	/*position: fixed;*/
+	width: 100%;
+	background-color: #2b2b2b; 
+	}
+
+#logo {
+	margin-left: 40px ;
+/*	width: 170px;
+	height: 70px;*/
+/*	background: #2b2b2b; 
+*/	float: left;
+	text-align: center;
+	line-height: 40px;
+	margin-top: 15px
+}
+
+nav {
+	float: right;
+	margin-top: 40px; ++++++++
+}
+
+nav a {
+	color: #faaf35;
+	text-decoration: none;
+	margin-left: 15px;
+	display: inline-block;
+	border-left: 1px solid #efefef;
+	padding-left: 15px;
+	line-height: 20px;
+}
+
+nav a:first-child {
+	border-left: 0 none;
+}
+nav a:last-child {
+	margin-right: 40px;
+}
+
+/*main*/
+#main-container {
+	padding-top: 20px;
+	/*float: center;*/
+}
+
+.main-section {
+	background: #fff; 
+	padding: 30px;
+	margin:	0 10px 40px 10px; ++++++++++
+	width: 100%;
+	max-width: 850px;
+	float: center;
+	border: 1px solid #ddd;
+}
+
+.auth-image {
+	width: 200px;
+	height: auto;
+	margin-top: 10px;
+	float: left;
+	margin-right: 25px;
+}
+/*results page styling*/
+
+/*footer*/
+footer {
+	background: #2b2b2b;
+	color: #fff;
+	padding: 30px 0;
+	clear: both;
+	border-top: 2px solid #ccc;
+	color: #ccc;
+	font-size: 12px;
+	text-align: center;
+	bottom: 0;
+	position: fixed;
+	width: 100%;
+}
+
+
+
+
+
+
+
+
+/*media query*/
+
