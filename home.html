@@ -1,21 +1,54 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>home</title>
-	<link href="https://fonts.googleapis.com/css?family=Baloo+Chettan" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-	<meta name ="veiwport" content="width=device-width initial-scale=1">  
-</head>
-<body>
-	<section class="enter">
-			<div class="content">
-				 <a> <img src="assets/images/Logo504x361.png"/> </a> <br>
-				 	<button type="button"> <a href="index.html">Enter</a> </button>
-				 	<p> must be 21 years of age or older</p>
-			</div>
-	</section>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Reset CSS File -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+		
+		<!-- Custom fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Baloo+Chettan" rel="stylesheet">
 
-</body>
+		<title>Home</title>
+		
+	</head>
+	<body>
+		
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+		  <strong>Bummer!</strong> You need to be 21 years or older to ride this ride.
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		    <span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		
+		<section class="enter">
+				<div class="content">
+					<img src="assets/images/Logo504x361.png"/> <br>
+					
+					<form>
+					  <div class="form-row align-items-center">
+					    <div class="col-md-4 offset-4 mb-3">
+					      <label for="age">How Old are you?</label> <br>
+					      <input type="number" class="form-control text-cetner" id="inputAge">
+					    </div>
+					  </div>
+					  <button type="button" class="btn btn-dark age-submit-button">Submit</button>
+					</form>
+				</div>
+		</section>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="assets/javascript/app-home-page.js"></script>
+	</body>
 </html>
