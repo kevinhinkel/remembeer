@@ -65,7 +65,35 @@ var database = firebase.database();
             helpArr.push(response.results[i].name);
             helpArr.push(response.results[i].geometry.location.lat);
             helpArr.push(response.results[i].geometry.location.lng);
+            helpArr.push(response.results[i].vicinity);
+            helpArr.push(response.results[i].rating);
+            helpArr.push(response.results[i].photos[0].html_attributions[0]);
             brewArry.push(helpArr);
+            
+
+            // get referance to favorites
+            var tBody = $(".google-results-table");
+            var tRow = $("<tr>");
+            
+            // Create a button for saving favorites
+            var saveImg = $("<img>");
+            saveImg.attr("src", "assets/images/Icon_20x20.png");
+            var saveButton = $("<button>").append(saveImg);
+            saveButton.attr("id", "save-button")
+            saveButton.attr("dataname", response.results[i].name);
+            saveButton.attr("datalat", response.results[i].geometry.location.lat);
+            saveButton.attr("datalng", response.results[i].geometry.location.lng);
+            saveButton.attr("datalink", response.results[i].photos[0].html_attributions[0]);
+            var tableSave = $("<td>").append(saveButton);
+            tableSave.addClass("saveButton");
+            
+            var bPhoto = $("<td>").html(response.results[i].photos[0].html_attributions[0]);
+            var bName = $("<td>").text(response.results[i].name);
+            var bAddress = $("<td>").text(response.results[i].vicinity);
+            var bRating = $("<td>").text(response.results[i].rating);
+            
+            tRow.append(bPhoto, bName, bAddress, bRating, tableSave);
+            tBody.append(tRow);
           }
         });
       }
@@ -128,8 +156,55 @@ var database = firebase.database();
       method: 'GET'
     }).done(function(response) {
     console.log(response);
+      
+  });
     
-    // get referance to favorites
+  }
+         
+  breweryInfo();
+
+
+// When clicking on a result on the google map page
+//==================================================================================================
+ 
+  $(document).on("click", "#save-button", function(){
+
+  // capture values from form entry
+  var brewName = $(this).attr("dataname");
+  var brewLat = $(this).attr("datalat");
+  var brewLng = $(this).attr("datalng");
+  var brewLink = $(this).attr("datalink");
+
+  
+  
+  
+  // push data into the firebase database
+  database.ref().push({
+    brewName: brewName,
+    brewLat: brewLat,
+    brewLng: brewLng,
+    brewLink: brewLink,
+  });
+  
+  });
+
+
+// Firebase listener
+//==================================================================================================
+
+database.ref().on("child_added", function(snapshot) {
+  console.log(snapshot);
+  
+  //capture results from clicking on a button on the map page
+  var brewName = snapshot.val().brewName;
+  var brewLat = snapshot.val().brewLat;
+  var brewLng = snapshot.val().brewLng;
+  var brewLink = snapshot.val().brewLink;
+  
+  //Update Table with values
+  //I will have to move the Brewyer API jquery down here once Dylan is done with the google api
+  
+  // get referance to favorites
     var tBody = $(".favorites-table");
     var tRow = $("<tr>");
     
@@ -141,69 +216,18 @@ var database = firebase.database();
     tableTrash.addClass("trashButton");
     
     
-    var icon = $("<img>");
-    icon.attr("src", response.data[0].images.icon);
+    var name = $("<td>").text(brewName);
+    var b_link = $("<td>").html(brewLink);
+    //var established = $("<td>").text(response.data[0].established);
     
-    
-    var name = $("<td>").text(response.data[0].name);
-    var established = $("<td>").text(response.data[0].established);
-    
-    tRow.append(icon, name, established, tableTrash);
+    tRow.append(name,b_link,tableTrash);
     tBody.append(tRow);
-      
-  });
-    
-  }
-         
-  breweryInfo();
-
-
-// When clicking on a result on the google map page
-//==================================================================================================
-
-// Don't refresh the page!
-//  event.preventDefault();
-
-  // capture values from form entry
-  // breweryIcon = 
-  // breweryName = 
-  // established = 
-  
-  // console.log(breweryIcon);
-  // console.log(breweryName);
-  // console.log(established);
-  
-  
-  // push data into the firebase database
-  // database.ref().push({
-  //   breweryIcon: breweryIcon,
-  //   breweryName: breweryName,
-  //   established: established,
-  // });
-  
-
-
-// Firebase listener
-//==================================================================================================
-
-// database.ref().on("child_added", function(snapshot) {
-//   console.log(snapshot);
-  
-  // capture results from clicking on a button on the map page
-  // var breweryIcon = 
-  // var breweryName = 
-  // var established = 
-  
-  // Update Table with values
-  // I will have to move the Brewyer API jquery down here once Dylan is done with the google api
-  
-  
 
 
 
-// }, function(errorObject) {
-//       console.log("Errors handled: " + errorObject.code);
-//     });
+}, function(errorObject) {
+      console.log("Errors handled: " + errorObject.code);
+    });
 
 
 
