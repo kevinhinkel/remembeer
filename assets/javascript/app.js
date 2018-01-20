@@ -65,7 +65,30 @@ var database = firebase.database();
             helpArr.push(response.results[i].name);
             helpArr.push(response.results[i].geometry.location.lat);
             helpArr.push(response.results[i].geometry.location.lng);
+            helpArr.push(response.results[i].vicinity);
+            helpArr.push(response.results[i].rating);
+            helpArr.push(response.results[i].photos[0].html_attributions[0]);
             brewArry.push(helpArr);
+            
+
+            // get referance to favorites
+            var tBody = $(".google-results-table");
+            var tRow = $("<tr>");
+            
+            // Create a button for saving favorites
+            var saveImg = $("<img>");
+            saveImg.attr("src", "assets/images/Icon_20x20.png");
+            var saveButton = $("<button>").append(saveImg);
+            var tableSave = $("<td>").append(saveButton);
+            tableSave.addClass("saveButton");
+            
+            var bPhoto = $("<td>").html(response.results[i].photos[0].html_attributions[0]);
+            var bName = $("<td>").text(response.results[i].name);
+            var bAddress = $("<td>").text(response.results[i].vicinity);
+            var bRating = $("<td>").text(response.results[i].rating);
+            
+            tRow.append(bPhoto, bName, bAddress, bRating, tableSave);
+            tBody.append(tRow);
           }
         });
       }
