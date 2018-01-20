@@ -21,53 +21,87 @@
 		
 	</head>
 	<body>
+		
+<!-- 		<div class="col-md-12">
+			<div class="row">
+				header
+			</div>
+			<div class="row">
+				Body
+			</div>
+		</div> -->
 
 		<!-- Navbar -->
 		<header id="masthead">
 			<div class="containter">
 				<div id="logo"> <a href="index.html"> <img src="assets/images/Logo150x108_YW.png"/> </a> </div> 
 				<nav>
-					<a href="home.html">HOME</a>
 					<a href="index.html">ABOUT</a>
 					<a href="map.html">MAP</a>
 					<a href="favorites.html">FAVORITES</a>
 				</nav>
-			</div>
+			</div> 
 		</header>
-		
-		<!-- div to hold the map -->
-		<div class = 'mapcontainer'>
-			<div id="map"></div>
-		</div>
+
+		<div class="container">
+
+			<!-- div to hold the map -->
+			<div class="row">
+				<div class="col-md-8">
+					<!-- Input Field -->
+			<form class="form-inline">
+		  <div class="form-group mb-2">
+			  </div>
+			  <div class="form-group mx-sm-3 mb-2">
+			    <label for="inputPassword2" class="sr-only">Password</label>
+			    <input type="City" class="form-control" id="city-input" placeholder="City">
+			    <input type="State" class="form-control" id="state-input" placeholder="State">
+
+			  </div>
+			  <button type="search" class="btn btn-light mb-2">Search</button>
+			</form>
+
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-10 offset-1">
+					<div class="card" style="width: 700px;">
+						<div class = 'mapcontainer'>
+							<div id="map"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
 		<!-- Table of google map results -->
 		<div class="containter">
 			<div class="row">
-				<div class="col-md-12">
-					<table class="table table-hover">
-					  <thead>
-					    <tr>
-					      <th scope="col">Brewery</th>
-					      <th scope="col">City</th>
-					      <th scope="col">State</th>
-					      <th scope="col">Rating</th>
-					    </tr>
-					  </thead>
-					  <tbody class="google-results-table">
-					  	<!-- list of google map results go here -->
-					  </tbody>
-					</table>
-				</div>
+				
+					<div class="col-md-12">
+						<table class="table table-hover">
+						  <thead>
+						    <tr>
+						      <th scope="col">Brewery</th>
+						      <th scope="col">City</th>
+						      <th scope="col">State</th>
+						      <th scope="col">Rating</th>
+						    </tr>
+						  </thead>
+						  <tbody class="google-results-table">
+						  	<!-- list of google map results go here -->
+						  </tbody>
+						</table>
+					</div>
 			</div>
 		</div>
-		
-		
-		<footer>
+	</div>
+<!-- 	<footer>
 			<div class="containter">
 				<p><strong>DON'T WORRY, BE HOPPY</strong></p>
 			</div>
 		</footer>
 		
-		
+		 -->
 		<!-- Firebase -->
 		<script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
 

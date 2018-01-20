@@ -1,16 +1,3 @@
-.mapcontainer {
-	height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-#map {
-    width: 50%;
-    position: relative;
-    overflow: hidden;
-    height: 400px;
-      }
-
 /*@import url('https://fonts.googleapis.com/css?family=Baloo Chettan');*/
 * {
 	box-sizing: border-box;
@@ -127,6 +114,22 @@ nav a:last-child {
 	margin-right: 40px;
 }
 
+
+.mapcontainer {
+	height: 100%;
+    margin: 0;
+    padding: 0;
+}
+/*MAP FORMATTING*/
+#map {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    height: 400px;
+}
+
+
+
 /*main*/
 #main-container {
 	padding-top: 20px;
@@ -157,7 +160,7 @@ nav a:last-child {
 
 .table {
 	padding: 30px;
-	margin:	0 10px 40px 190px;
+	/*margin:	0 10px 40px 190px;*/
 	width: 100%;
 	max-width: 850px;
 	float: center;
@@ -179,7 +182,7 @@ footer {
 	font-size: 12px;
 	text-align: center;
 	bottom: 0;
-	position: fixed;
+	/*position: fixed;*/
 	width: 100%;
 }
 
