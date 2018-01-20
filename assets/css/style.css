@@ -123,7 +123,7 @@ nav a:last-child {
 .main-section {
 	background: #fff; 
 	padding: 30px;
-	margin:	0 10px 40px 10px; ++++++++++
+	margin:	0 10px 40px 10px;
 	width: 100%;
 	max-width: 850px;
 	float: center;
@@ -138,6 +138,22 @@ nav a:last-child {
 	margin-right: 25px;
 }
 /*results page styling*/
+#favs {
+	text-align: center;
+}
+
+.table {
+	padding: 30px;
+	margin:	0 10px 40px 190px;
+	width: 100%;
+	max-width: 850px;
+	float: center;
+/*	border: 1px solid #ddd;
+*/}
+
+
+
+
 
 /*footer*/
 footer {
