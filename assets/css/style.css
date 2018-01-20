@@ -1,3 +1,16 @@
+.mapcontainer {
+	height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+    width: 50%;
+    position: relative;
+    overflow: hidden;
+    height: 400px;
+      }
+
 /*@import url('https://fonts.googleapis.com/css?family=Baloo Chettan');*/
 * {
 	box-sizing: border-box;
