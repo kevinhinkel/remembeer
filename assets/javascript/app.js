@@ -25,9 +25,7 @@ var database = firebase.database();
       var state = "MN";
       var globalLatSearch = "";
       var globalLngSearch = "";
-      var favKey;
 
-      
       
 
       //turn inputted city and state into latitude/longitude
@@ -173,26 +171,26 @@ $("#submit-city-state").on("click", function() {
 //==================================================================================================
 
   // name will come from google api results based on the button clicked
-  var name = "schells";
-  var apiKey = "?key=" + "a37a220d023a72fb358d5761d1f0f322";
-  var brewery = "&q=" + name;
+  // var name = "schells";
+  // var apiKey = "?key=" + "a37a220d023a72fb358d5761d1f0f322";
+  // var brewery = "&q=" + name;
     
        
-  function breweryInfo() {
+  // function breweryInfo() {
     
-    var queryURL = "https://cors-anywhere.herokuapp.com/" + "http://api.brewerydb.com/v2/search" + apiKey + brewery + "&type=brewery";
+  //   var queryURL = "https://cors-anywhere.herokuapp.com/" + "http://api.brewerydb.com/v2/search" + apiKey + brewery + "&type=brewery";
     
-    $.ajax({
-      url: queryURL,
-      method: 'GET'
-    }).done(function(response) {
-    console.log(response);
+  //   $.ajax({
+  //     url: queryURL,
+  //     method: 'GET'
+  //   }).done(function(response) {
+  //   console.log(response);
       
-  });
+  // });
     
-  }
+  // }
          
-  breweryInfo();
+  // breweryInfo();
 
 
 // When clicking on a result on the google map page
@@ -277,17 +275,19 @@ database.ref().on("child_added", function(snapshot) {
 // on click event for delete button
 //==================================================================================================
 
-  $(".alert-primary").hide();
+ $(".alert").hide();
 
 // Delete the entry when user clicks on the Delete button
  $(document).on("click", ".trashButton", function() { 
-   
-    $('.alert-primary').show();
-    $('.alert-primary').alert();
+  
+  $('.alert-primary').show();
+  $('.alert-primary').alert();
   
     console.log("Delete the entry with key#: " + childKey); 
     $(this).closest('tr').remove();
     database.ref().child(childKey).remove(); // removes favorite
+    
+    location.reload();
  });
 
 
