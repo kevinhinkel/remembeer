@@ -25,6 +25,7 @@ var database = firebase.database();
       var state = "MN";
       var globalLatSearch = "";
       var globalLngSearch = "";
+      var favKey;
       
       
 
@@ -210,8 +211,14 @@ $("#submit-city-state").on("click", function() {
 // Firebase listener
 //==================================================================================================
 
+var childKey;
+
 database.ref().on("child_added", function(snapshot) {
   console.log(snapshot);
+
+  //key to be used in remove button
+  childKey = snapshot.key;
+  console.log("snapshot.key: " + childKey);
   
   //capture results from clicking on a button on the map page
   var brewName = snapshot.val().brewName;
@@ -230,8 +237,10 @@ database.ref().on("child_added", function(snapshot) {
     var trashImg = $("<img>");
     trashImg.attr("src", "assets/images/trash-2x.png");
     var trashButton = $("<button>").append(trashImg);
+    trashButton.attr("data-key", favKey);
     var tableTrash = $("<td>").append(trashButton);
     tableTrash.addClass("trashButton");
+
     
     
     var name = $("<td>").text(brewName);
@@ -241,11 +250,36 @@ database.ref().on("child_added", function(snapshot) {
     tRow.append(name,b_link,tableTrash);
     tBody.append(tRow);
 
+    favKey++;
 
 
 }, function(errorObject) {
       console.log("Errors handled: " + errorObject.code);
     });
+
+
+
+
+// on click event for delete button
+//==================================================================================================
+
+$(document).on("click", ".trashButton", function() {
+
+  var keyNum = $(this).attr("data-key");
+  console.log(keyNum);
+    
+
+});
+
+// Delete the entry when user clicks on the Delete button
+ $(document).on("click", ".trashButton", function() { 
+    console.log("Delete the entry with key#: " + childKey); 
+    $(this).closest('tr').remove();
+    database.ref().child(childKey).remove(); // removes favorite
+ });
+
+
+
 
 
 
