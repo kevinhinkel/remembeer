@@ -23,9 +23,10 @@ var database = firebase.database();
 //search terms that the user will input and google will return with breweries
       var city = "Minneapolis";
       var state = "MN";
-      var globalLatSearch = 0;
-      var globalLngSearch = 0;
+      var globalLatSearch = "";
+      var globalLngSearch = "";
       var favKey;
+
       
       
 
@@ -197,7 +198,12 @@ $("#submit-city-state").on("click", function() {
 // When clicking on a result on the google map page
 //==================================================================================================
  
+  $(".alert-success").hide();
+ 
   $(document).on("click", "#save-button", function(){
+    
+  $('.alert-success').show();
+  $('.alert-success').alert();
 
   // capture values from form entry
   var brewName = $(this).attr("dataname");
@@ -205,8 +211,6 @@ $("#submit-city-state").on("click", function() {
   var brewLng = $(this).attr("datalng");
   var brewLink = $(this).attr("datalink");
 
-  
-  
   
   // push data into the firebase database
   database.ref().push({
@@ -222,6 +226,7 @@ $("#submit-city-state").on("click", function() {
 // Firebase listener
 //==================================================================================================
 
+//variable to store key to be deleted
 var childKey;
 
 database.ref().on("child_added", function(snapshot) {
@@ -248,7 +253,6 @@ database.ref().on("child_added", function(snapshot) {
     var trashImg = $("<img>");
     trashImg.attr("src", "assets/images/trash-2x.png");
     var trashButton = $("<button>").append(trashImg);
-    trashButton.attr("data-key", favKey);
     var tableTrash = $("<td>").append(trashButton);
     tableTrash.addClass("trashButton");
 
@@ -261,7 +265,6 @@ database.ref().on("child_added", function(snapshot) {
     tRow.append(name,b_link,tableTrash);
     tBody.append(tRow);
 
-    favKey++;
 
 
 }, function(errorObject) {
@@ -274,27 +277,19 @@ database.ref().on("child_added", function(snapshot) {
 // on click event for delete button
 //==================================================================================================
 
-$(document).on("click", ".trashButton", function() {
-
-  var keyNum = $(this).attr("data-key");
-  console.log(keyNum);
-    
-
-});
+  $(".alert-primary").hide();
 
 // Delete the entry when user clicks on the Delete button
  $(document).on("click", ".trashButton", function() { 
+   
+    $('.alert-primary').show();
+    $('.alert-primary').alert();
+  
     console.log("Delete the entry with key#: " + childKey); 
     $(this).closest('tr').remove();
     database.ref().child(childKey).remove(); // removes favorite
  });
 
 
-
-
-
-
-
-
-
 //==================================================================================================
+
