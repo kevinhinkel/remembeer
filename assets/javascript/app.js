@@ -25,6 +25,8 @@ var database = firebase.database();
       var state = "MN";
       var globalLatSearch = "";
       var globalLngSearch = "";
+      var favKey;
+
       
       
 
@@ -62,19 +64,28 @@ var database = firebase.database();
           url: queryURL,
           method: "GET"
         }).done(function(response) {
+          
+          //variable for the table holding the brewery search
+          var tBody = $(".google-results-table");
+          //empty the table each search
+          tBody.empty();
+
+          //loop through top 5 results
           for (i =0; i < 5; i++) {
+            //create a array for all the elements of a single brewery - then inputed in the brewArry (holds all breweries)
             var helpArr = [];
+            //add elements of the ajax call to the helper array
             helpArr.push(response.results[i].name);
             helpArr.push(response.results[i].geometry.location.lat);
             helpArr.push(response.results[i].geometry.location.lng);
             helpArr.push(response.results[i].vicinity);
             helpArr.push(response.results[i].rating);
             helpArr.push(response.results[i].photos[0].html_attributions[0]);
+            //add the helper array to brewArry
             brewArry.push(helpArr);
-            
-
-            // get referance to favorites
-            var tBody = $(".google-results-table");
+            //// get referance to favorites
+            //var tBody = $(".google-results-table");
+            // tBody = tBody.empty();
             var tRow = $("<tr>");
             
             // Create a button for saving favorites
@@ -97,12 +108,14 @@ var database = firebase.database();
             tRow.append(bPhoto, bName, bAddress, bRating, tableSave);
             tBody.append(tRow);
           }
+
+          //call the map function to re-render with new lat/lng
+          initMap();
         });
       }
 
+      //call the function to render map and starting city/state
       turnQueryToLatLng();
-
-
 
       //create map of the top 5 breweries with markers
       var map;
