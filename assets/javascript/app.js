@@ -21,10 +21,12 @@ var database = firebase.database();
 //==================================================================================================
 
 //search terms that the user will input and google will return with breweries
-      var city = 'minneapolis';
-      var state = 'MN';
+      var city = "Minneapolis";
+      var state = "MN";
       var globalLatSearch = "";
       var globalLngSearch = "";
+      
+      
 
       //turn inputted city and state into latitude/longitude
       function turnQueryToLatLng() {
@@ -36,8 +38,8 @@ var database = firebase.database();
           method: "GET"
         }).done(function(response1) {
           //create variables for latitude & longitude
-          let brewSearchLat = String(response1.results[0].geometry.location.lat);
-          let brewSearchLng = String(response1.results[0].geometry.location.lng);
+          var brewSearchLat = String(response1.results[0].geometry.location.lat);
+          var brewSearchLng = String(response1.results[0].geometry.location.lng);
           //set the global search variables for lat/lng
           globalLatSearch = response1.results[0].geometry.location.lat;
           globalLngSearch = response1.results[0].geometry.location.lng;
@@ -134,8 +136,24 @@ var database = firebase.database();
             map: map
           });
         }
-      }
+      };
 
+
+
+// Click event for submitting city and state
+//==================================================================================================
+
+$("#submit-city-state").on("click", function() {
+  
+  // Don't refresh the page!
+  event.preventDefault();
+  
+  city = $("#city-input").val().trim();
+  state = $("#state-input").val().trim();;
+  
+  turnQueryToLatLng();
+
+});
 
 
 // Brewery API
